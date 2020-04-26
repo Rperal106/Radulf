@@ -183,7 +183,7 @@ function reC(){
     lin.style('font-size','17px');
   }
 function muteButton(){
-  vol= createImg(volCont);
+  vol= createbutton('Music');
   vol.position(540,260);
   vol.mousePressed(muteSound);
 }
@@ -191,10 +191,8 @@ function muteButton(){
 function muteSound(){
   if (song.isPlaying()) {
       song.stop();
-      volCont = mute;
     } else {
       song.play();
-      volCont = unMute;
     }
   }
 
