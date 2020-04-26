@@ -36,10 +36,10 @@ function preload() {
     strokeWeight(4);
     text("RADULF'S UNRELIABLE FORGE", width/2, 25);
     pop();
+    muteButton();
   }
   //
   function draw() {
-    muteButton();
   }
   //make a list of for all version, perhaps make a forloop here so it's dependant on what is pressed as towhich called oject is called
   function resetTbl1() {
@@ -184,7 +184,7 @@ function reC(){
   }
 function muteButton(){
   vol= createButton('Music');
-  vol.position(540,260);
+  vol.position(580,330);
   vol.mousePressed(muteSound);
 }
 
