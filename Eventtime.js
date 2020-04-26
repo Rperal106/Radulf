@@ -7,7 +7,7 @@ function preload() {
   song = loadSound('assets/Chest2.mp3');
   doodot = loadSound('assets/item.wav');
   img = loadImage('assets/chest.png');
-  mute = loadImage('assets/VolOFF.png');
+  mute = loadImage('assets/volOFF.png');
   unMute = loadImage('assets/volON.png');
   }
 
