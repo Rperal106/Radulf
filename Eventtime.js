@@ -7,12 +7,15 @@ function preload() {
   song = loadSound('assets/Chest2.mp3');
   doodot = loadSound('assets/item.wav');
   img = loadImage('assets/chest.png');
+  unMute = loadImage('assets/volON.png');
+  mute = loadImage('assets/VolOFF.png');
   }
 
   function setup() {
     song.play();
     song.loop();
     createCanvas(640, 360);
+    volCont = unMute;
     col = color(0, 0, 0, 90);
     bgcol = color(0, 0, 0);
     lessE = table.getColumn('Lesser Enchantments');
@@ -41,31 +44,26 @@ function preload() {
   function resetTbl1() {
     rstQ();
     caLess();
-    doodot.play();
   }
-
   function resetTbl2() {
     rstQ();
     caMed();
-    doodot.play();
   }
-
   function resetTbl3() {
     rstQ();
     caMag();
-    doodot.play();
   }
-
   function resetTbl4() {
     rstQ()
     caLeg();
-    doodot.play();
   }
-
   function rstQ() {
+    doodot.play();
     clear();
-      tint(0, 153, 204, 126);
+    push();
+    tint(0, 153, 204, 126);
     background(img, 640, 360);
+    pop();
     push();
     textSize(35);
     fill(103, 133, 100)
@@ -77,7 +75,8 @@ function preload() {
 
   function caLess() {
     index = floor(random(lessE.length));
-
+//console will log not only the item that is called, but also the number
+//it was listed under in the doc
     console.log(lessE[index]);
     console.log(index);
 
@@ -126,25 +125,26 @@ function preload() {
     message = (legE[index]);
     messageBeep();
   }
-
+//buttons live here
   function allButtons() {
     button[0] = createButton('Lesser Forge (50GP)');
-    back();
+  back();
     button[0].size(100);
     button[0].position(buttX, buttY);
     button[0].mousePressed(resetTbl1);
-    button[1] = createButton('Medium Forge (100GP)');
-    back();
+button[1] = createButton('Medium Forge (100GP)');
+  back();
     button[1].size(100);
+    //this structure binds all future buttons to button[0]s position
     button[1].position(button[0].x, button[0].y + button[0].height);
     button[1].mousePressed(resetTbl2);
-    button[2] = createButton('Major Forge (500GP)');
-    back();
+button[2] = createButton('Major Forge (500GP)');
+  back();
     button[2].size(100);
     button[2].position(button[1].x, button[1].y + button[1].height);
     button[2].mousePressed(resetTbl3);
-    button[3] = createButton('Legendary Forge (1000GP)');
-    back();
+button[3] = createButton('Legendary Forge (1000GP)');
+  back();
     button[3].size(100);
     button[3].position(button[2].x, button[2].y + button[2].height);
     button[3].mousePressed(resetTbl4);
@@ -162,8 +162,8 @@ function preload() {
   }
   //creates a paragraph in the html that allows the
   //text to be hilighted
-  function messageBeep() {
-    jar = createDiv(message)
+function messageBeep() {
+  jar = createDiv(message)
     jar.position(buttX + 100, buttY);
     jar.style('background-color', bgcol);
     jar.size(width - 300, 140);
@@ -174,14 +174,33 @@ function preload() {
     jar.style('font-size', '12px');
   }
 
-  function reC(){
-lin = createA('https://www.dndbeyond.com/sources/dmg/between-adventures#CraftingaMagicItem',
- 'want to make your own items?');
-lin.position(20,325);
-lin.style('color', 'white');
-lin.style('font-size','17px');
+function reC(){
+  //hyperlink to my source for making items
+  lin = createA('https://www.dndbeyond.com/sources/dmg/between-adventures#CraftingaMagicItem',
+    'want to make your own items?');
+    lin.position(20,325);
+    lin.style('color', 'white');
+    lin.style('font-size','17px');
   }
-  // ATTEMPT AT MAKING A TEST BACKGROUND TO SEE HOW THINGS RESIZE, DOES NOT BUT THAT'S BECAUSE IT'S DONE THROUGH PROSSESSING
+function muteButton(){
+  vol= createImg(volCont);
+  vol.position(540,260);
+  vol.mousePressed(muteSound);
+}
+
+function muteSound(){
+  if (song.isPlaying()) {
+      song.stop();
+      volCont = mute;
+    } else {
+      song.play();
+      volCont = unMute;
+    }
+  }
+
+  // ATTEMPT AT MAKING A TEST BACKGROUND TO SEE HOW
+  //THINGS RESIZE, DOES NOT BUT THAT'S BECAUSE IT'S
+  //DONE THROUGH PROSSESSING resizing is just a thing i can call
   // function testsq(){
   //   push();
   //   fill('red');
@@ -191,7 +210,8 @@ lin.style('font-size','17px');
   //   rect(i, 0, 20, height);
   //   }
   // }
-  //
+  // OLD CODE USED IN FIRST ITTERATION
+  //USED AS A Reference FOR CALLING STRINGS
   // function genLoot(x, y, w, h) {
   //   rectMode(CENTER);
   //   push();
