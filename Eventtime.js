@@ -39,6 +39,7 @@ function preload() {
   }
   //
   function draw() {
+    muteButton();
   }
   //make a list of for all version, perhaps make a forloop here so it's dependant on what is pressed as towhich called oject is called
   function resetTbl1() {
