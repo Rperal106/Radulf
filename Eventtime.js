@@ -61,7 +61,6 @@ function preload() {
     doodot.play();
     clear();
     push();
-    tint(0, 153, 204, 126);
     background(img, 640, 360);
     pop();
     push();
