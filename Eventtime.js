@@ -64,6 +64,7 @@ function preload() {
 
   function rstQ() {
     clear();
+      tint(0, 153, 204, 126);
     background(img, 640, 360);
     push();
     textSize(35);
