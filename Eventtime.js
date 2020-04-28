@@ -209,11 +209,16 @@ function messageBeep() {
 
 function reC() {
   //hyperlink to my source for making items
-  lin = createA('https://www.dndbeyond.com/sources/dmg/between-adventures#CraftingaMagicItem',
-    'want to make your own items?');
+  lin = createA(//placed link function in item press to allow a pop up to happen
+  'lin.mousePressed','want to make your own items?');
   lin.position(20, 325);
+  lin.mousePressed(theLink);
   lin.style('color', 'white');
   lin.style('font-size', '17px');
+}
+
+function theLink(){
+  window.open('https://www.dndbeyond.com/sources/dmg/between-adventures#CraftingaMagicItem')
 }
 
 function muteButton() {
